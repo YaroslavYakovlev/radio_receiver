@@ -1,9 +1,33 @@
 #include <iostream>
 
+bool checkFreq(float* arr, int count, float channel){
+  if((channel < 0) || (channel >= count)){
+    std::cerr << "Error there is no such channel!" << std::endl;
+    return false;
+  }else if(channel == 0){
+    std::cout << "Radio receiver - OFF" << std::endl;
+  }else{
+    std::cout << "The radio receiver is switched to a channel " << channel << std::endl;
+  }
+}
+
 int main(){
   std::cout << "Radio receiver" << std::endl;
+  float settings[10];
+  float channel = 0.0f;
+  std::cout << "Enter settings." << std::endl;
+  for(int i = 0; i < 10; i++){
+    std::cin >> settings[i];
+  }
+  std::cout << "Enter the channel" << std::endl;
+  std::cin >> channel;
+  checkFreq(settings, 10, channel);
   return 0;
 }
+
+// В целом, всё верно. Только пользователь вводит не частоту, 
+// а номер канала. И если он < 0 или >10, то выводится сообщение 
+// об ошибке.
 
 // В радио-приёмнике настроено 10 частот-каналов, 
 // представленные в виде массива. Каждая из настроек частоты это
